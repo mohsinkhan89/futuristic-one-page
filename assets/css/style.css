@@ -44,7 +44,7 @@ a {
 }
 
 .site-header {
-  position: absolute;
+  position: sticky;
   z-index: 20;
   top: 0;
   left: 0;
@@ -53,7 +53,9 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 40px clamp(46px, 6vw, 88px) 18px;
-  background: linear-gradient(180deg, rgba(2, 7, 15, 0.92), rgba(2, 7, 15, 0));
+  background: linear-gradient(180deg, rgba(2, 7, 15, 0.96), rgba(2, 7, 15, 0.52) 72%, rgba(2, 7, 15, 0));
+  backdrop-filter: blur(10px);
+  animation: dropIn 700ms ease both;
 }
 
 .main-nav,
@@ -101,23 +103,27 @@ a {
   gap: 24px;
 }
 
-.social-links img {
-  width: 21px;
-  height: 21px;
+.social-links i {
+  color: #fff;
+  font-size: 18px;
   opacity: 0.95;
-  transition: transform 180ms ease, opacity 180ms ease;
+  transition: transform 180ms ease, opacity 180ms ease, color 180ms ease, text-shadow 180ms ease;
 }
 
-.social-links a:hover img {
+.social-links a:hover i {
   transform: translateY(-2px);
   opacity: 1;
+  color: #45ccff;
+  text-shadow: 0 0 14px rgba(69, 204, 255, 0.75);
 }
 
 .hero {
   position: relative;
   display: grid;
-  min-height: clamp(680px, 56vw, 900px);
-  padding: 144px 36px 74px;
+  /* min-height: clamp(680px, 56vw, 900px); */
+  min-height: clamp(680px, 70vw, 900px);
+  margin-top: -170px;
+  padding: 248px 36px 200px;
   place-items: center;
   text-align: center;
   /* background:
@@ -141,7 +147,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 1;
-  width: min(900px, 100%);
+  width: min(1010px, 100%);
   margin-top: 0;
 }
 
@@ -149,6 +155,7 @@ a {
   width: min(465px, 72vw);
   margin-bottom: 34px;
   filter: drop-shadow(0 0 24px rgba(23, 137, 255, 0.35));
+  animation: floatIn 900ms ease 160ms both, logoPulse 4s ease-in-out 1.2s infinite;
 }
 
 .tagline {
@@ -157,6 +164,7 @@ a {
   justify-content: center;
   gap: 30px;
   margin-bottom: 32px;
+  animation: fadeRise 850ms ease 300ms both;
 }
 
 .tagline span {
@@ -185,6 +193,7 @@ a {
   letter-spacing: 3.8px;
   text-transform: uppercase;
   text-shadow: 0 0 28px rgba(8, 100, 191, 0.28);
+  animation: fadeRise 850ms ease 430ms both;
 }
 
 .hero h1 strong {
@@ -198,6 +207,7 @@ a {
   color: #eef4fb;
   font-size: 17px;
   line-height: 1.66;
+  animation: fadeRise 850ms ease 560ms both;
 }
 
 .cta-button {
@@ -205,23 +215,64 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
-  min-height: 66px;
-  margin-top: 36px;
+  min-width: 196px;
+  min-height: 47px;
+  margin-top: 30px;
   color: #fff;
   font-family: "Orbitron", sans-serif;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 800;
-  letter-spacing: 2.6px;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
-  background:
-    linear-gradient(90deg, transparent 14px, rgba(9, 83, 148, 0.72) 14px calc(100% - 14px), transparent calc(100% - 14px)),
-    linear-gradient(135deg, transparent 18px, rgba(42, 179, 255, 0.95) 18px 20px, transparent 20px calc(100% - 20px), rgba(42, 179, 255, 0.95) calc(100% - 20px) calc(100% - 18px), transparent calc(100% - 18px));
-  filter: drop-shadow(0 0 14px rgba(18, 140, 255, 0.45));
+  background: rgba(3, 14, 31, 0.76);
+  clip-path: polygon(11% 0, 89% 0, 100% 28%, 100% 72%, 89% 100%, 11% 100%, 0 72%, 0 28%);
+  filter: drop-shadow(0 0 10px rgba(18, 140, 255, 0.48));
+  isolation: isolate;
+  animation: fadeRise 850ms ease 700ms both, buttonGlow 2.6s ease-in-out 1.2s infinite;
+}
+
+.cta-button::before,
+.cta-button::after {
+  position: absolute;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+}
+
+.cta-button::before {
+  inset: 0;
+  background: linear-gradient(90deg, #087aff, #45c9ff 46%, #087aff);
+  clip-path: polygon(
+    11% 0,
+    89% 0,
+    100% 28%,
+    100% 72%,
+    89% 100%,
+    11% 100%,
+    0 72%,
+    0 28%,
+    11% 0,
+    11% 4px,
+    4px 29%,
+    4px 71%,
+    12% calc(100% - 4px),
+    88% calc(100% - 4px),
+    calc(100% - 4px) 71%,
+    calc(100% - 4px) 29%,
+    88% 4px,
+    11% 4px
+  );
+}
+
+.cta-button::after {
+  inset: 7px 24px;
+  border-top: 1px solid rgba(94, 207, 255, 0.35);
+  border-bottom: 1px solid rgba(94, 207, 255, 0.18);
 }
 
 .cta-button:hover {
   color: #bdefff;
+  filter: drop-shadow(0 0 15px rgba(34, 170, 255, 0.75));
 }
 
 .scroll-cue {
@@ -270,6 +321,7 @@ a {
   box-shadow: inset 0 1px 0 rgba(100, 175, 255, 0.05), inset 0 -1px 0 rgba(100, 175, 255, 0.05);
   backdrop-filter: blur(3px);
   text-align: center;
+  animation: fadeRise 700ms ease both;
 }
 
 .focus-section h2 {
@@ -290,6 +342,19 @@ a {
   position: relative;
   min-height: 156px;
   padding: 0 clamp(24px, 4.1vw, 62px);
+  animation: fadeRise 700ms ease both;
+}
+
+.focus-item:nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.focus-item:nth-child(3) {
+  animation-delay: 180ms;
+}
+
+.focus-item:nth-child(4) {
+  animation-delay: 270ms;
 }
 
 .focus-item + .focus-item::before {
@@ -306,6 +371,12 @@ a {
   width: 66px;
   height: 66px;
   margin-bottom: 15px;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.focus-item:hover img {
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 0 14px rgba(69, 204, 255, 0.65));
 }
 
 .focus-item h3 {
@@ -354,6 +425,7 @@ a {
   max-height: none;
   object-fit: cover;
   filter: drop-shadow(0 0 18px rgba(16, 128, 255, 0.3));
+  animation: slowDrift 9s ease-in-out infinite alternate;
 }
 
 .mission-panel {
@@ -428,6 +500,11 @@ a {
   font-size: 13px;
 }
 
+.privacy-note i {
+  color: #8b95a5;
+  font-size: 13px;
+}
+
 .form-message {
   min-height: 22px;
   margin: 12px 0 0;
@@ -494,6 +571,36 @@ a {
   45% { transform: translateY(12px); opacity: 1; }
 }
 
+@keyframes dropIn {
+  from { transform: translateY(-18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeRise {
+  from { transform: translateY(18px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes floatIn {
+  from { transform: translateY(24px) scale(0.96); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes logoPulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(23, 137, 255, 0.25)); }
+  50% { filter: drop-shadow(0 0 30px rgba(69, 204, 255, 0.48)); }
+}
+
+@keyframes buttonGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(18, 140, 255, 0.48)); }
+  50% { filter: drop-shadow(0 0 18px rgba(34, 170, 255, 0.82)); }
+}
+
+@keyframes slowDrift {
+  from { transform: scale(1.02) translateX(-6px); }
+  to { transform: scale(1.06) translateX(6px); }
+}
+
 @media (max-width: 1100px) {
   .site-header {
     padding: 32px 34px 18px;
@@ -537,7 +644,7 @@ a {
 
 @media (max-width: 760px) {
   .site-header {
-    position: absolute;
+    position: sticky;
     flex-direction: column;
     gap: 18px;
     padding: 24px 18px;
