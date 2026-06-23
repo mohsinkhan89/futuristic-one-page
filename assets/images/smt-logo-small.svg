@@ -1,0 +1,15 @@
+<svg width="220" height="82" viewBox="0 0 220 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="a" x1="12" x2="155" y1="8" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/><stop offset="1" stop-color="#ccd4df"/>
+    </linearGradient>
+    <linearGradient id="b" x1="150" x2="214" y1="8" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4ed0ff"/><stop offset=".6" stop-color="#087bff"/><stop offset="1" stop-color="#0056d7"/>
+    </linearGradient>
+  </defs>
+  <path d="M30 12h73l-10 11H29c-15 0-16 18 0 18h44L63 52H25C11 52 1 42 1 32c0-11 10-20 29-20Z" fill="url(#a)"/>
+  <path d="M12 27h66L68 38H7c2-7 7-11 5-11Z" fill="url(#a)"/>
+  <path d="M98 12h13l33 32 22-32h15v40h-15V31l-17 21h-12l-27-26v26H98V12Z" fill="url(#a)"/>
+  <path d="M164 12h52l-9 12h-19v28h-15V24h-18l9-12Z" fill="url(#b)"/>
+  <text x="110" y="75" text-anchor="middle" fill="#E3EAF2" font-family="Arial, sans-serif" font-size="6" letter-spacing="5">STRATEGIC MEDICAL TRAINING</text>
+</svg>
